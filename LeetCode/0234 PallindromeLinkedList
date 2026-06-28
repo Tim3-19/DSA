@@ -1,0 +1,50 @@
+
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+
+        if(head==null)
+        return false;
+        ListNode slow=head;//moves 1 at a time
+        ListNode fast = head;//moves 2 at a time
+        //Looking for mid pointer
+        while(fast.next!=null)
+        {
+            fast=fast.next;
+            if(fast.next==null)
+            break;
+            slow=slow.next;
+            
+            fast=fast.next;
+        }
+        ListNode curr = slow;
+        ListNode temp = slow;
+        ListNode prev =slow;
+        temp=temp.next;
+        //making a connection backside towards the middle
+        while(temp!=null)
+        {
+            
+             curr =temp;
+             temp=temp.next;
+             curr.next=prev;
+             prev=curr;
+
+        }
+        temp=head;
+        //2 pointer approach
+        while(true)
+        {
+            if(temp.val!=curr.val)
+            return false;
+            temp=temp.next;
+            curr=curr.next;
+            if(curr==slow)
+            break;
+            if(temp==curr)
+            return true;
+
+        }
+        return true;
+        
+    }
+}
