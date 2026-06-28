@@ -1,0 +1,22 @@
+
+ //Used the concept of hare and tortoise
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+       if (head == null || head.next == null) {
+            return false;
+        }
+        ListNode slow =head;//moving 1 node at a time
+        ListNode fast =head;//moving 2 node at a time
+        while(fast.next!=null && fast!=null)
+        {
+            slow = slow.next;
+            fast= fast.next.next;
+            if(fast==null)//if it goes null then no cycle
+            break;
+            if(slow==fast)//overlapping
+            return true;
+            
+        }
+        return false;
+    }
+}
