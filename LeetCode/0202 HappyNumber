@@ -1,0 +1,24 @@
+class Solution {
+    public boolean isHappy(int n) {
+        if(n<=0)
+        return false;
+        if(n==4)//If it lopps to 4 it is never happy number
+        return false;
+        if(n==1)//Condition of happy number
+        return true;
+        int sum =0;
+        int d=0;
+        while(n!=0)//summation of digits
+        {
+            d=n%10;
+            sum+=(d*d);
+            n/=10;
+
+
+            
+        }
+        return isHappy(sum);
+        
+        
+    }
+}
