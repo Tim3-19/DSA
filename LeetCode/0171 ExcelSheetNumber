@@ -1,0 +1,19 @@
+//Tricky Question
+class Solution {
+    public int titleToNumber(String columnTitle) {
+        if(columnTitle.length()==1)
+        return((int)(columnTitle.charAt(0))-'A'+1);
+        int sum=0;
+        for(int i =0;i<columnTitle.length()-1;i++)
+        {
+           
+            int value = (int)(columnTitle.charAt(i))-'A'+1;
+            sum+=value*Math.pow(26,(columnTitle.length()-i-1));
+        
+
+
+        }
+        sum+=((int)(columnTitle.charAt(columnTitle.length()-1))-'A'+1);
+        return sum;
+    }
+}
