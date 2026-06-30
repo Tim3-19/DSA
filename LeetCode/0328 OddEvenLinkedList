@@ -1,0 +1,38 @@
+
+class Solution {
+    public ListNode oddEvenList(ListNode head) {
+        if(head==null)
+        return null;
+        if(head.next==null)//SingleElemnt
+        return head;
+         ListNode odd =head;
+         ListNode oddHead =head;
+        ListNode temp=head;
+        temp=temp.next;
+        ListNode even =temp;
+         ListNode evenHead =temp;
+        temp=temp.next;
+        int count =3;
+        
+       
+
+        while(temp!=null)
+        {
+            if(count%2==0)
+            {even.next=temp;
+            even=even.next;
+            }
+            else{
+            odd.next=temp;
+            odd=odd.next;
+            }
+            count++;
+            temp=temp.next;
+        }
+        odd.next=evenHead;
+        even.next=null;
+        return oddHead;
+
+        
+    }
+}
