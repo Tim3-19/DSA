@@ -1,0 +1,45 @@
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+        if(head==null)
+        return head;
+        
+        ListNode temp=head;
+         while(temp!=null &&  temp.val==val)//checking if the initial element is the target one
+         {  
+            
+            temp=temp.next;
+        }
+             if(temp==null)//if the entire list had the target element
+             return null;
+        ListNode nhead=temp;
+        ListNode curr=temp;
+        ListNode prev=temp;
+        temp=temp.next;
+        
+        while(temp!=null)//traversing the list
+        {
+            curr=temp;
+            temp=temp.next;
+            if(curr.val==val){//checkng for target element
+            while(curr.val==val)//if consecutive target elements are there
+            {
+                if(temp==null)//if the ending elemnt is the target one
+                {
+                    prev.next=null;
+                    return nhead;
+
+
+                }
+                temp=temp.next;
+                curr=curr.next;
+                prev.next=curr;
+            }
+            prev=curr;
+            }
+            
+           prev=curr;
+         }
+        return nhead;
+
+    }
+}
